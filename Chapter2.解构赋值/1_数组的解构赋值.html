@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * //位置对应
+        let [a,b,c] = [1,2,3]
+        console.log(a,b,c)//1,2,3*/
+        /**
+         * //结构一致
+         let arr =  [1 , [2 , [3] ] ]
+         let [a , [b , [c] ] ] = arr
+         console.log(a,b,c)*/
+       /**
+        * //解构失败
+        let [a, b, c]=[1, 2];
+        console.log(a,b,c) //1 2 undefined*/
+        /**
+         * */
+            //不完全解构
+        /**let [a, b] = [1, 2, 3];
+        console.log(a,b)*/
+        let  [a, b, ...rest] = [1, 2, 3, 4, 5];
+        console.log(a); // 1
+        console.log(b); // 2
+        console.log(rest); // [3, 4, 5]
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

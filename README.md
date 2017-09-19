@@ -1,15 +1,14 @@
 # atinaES6
 There are some examples of ES6
-# EasyES
-EasyES during every Friday
+
 ***
-## EasyES - Chapter.01 - 变量声明关键字 2017.09.08
+## atinaES6 - Chapter.01 - 变量声明关键字 2017.09.08
 ---
 > **1. ES6 关键字 _`let`_**
 > > 块级作用域
 > > > `if` & 无变量提升  
 > > > `for` & 变量泄漏  
-> > 暂存死区TDZ ( 函数默认值等不明显的TDZ )
+> > 暂存死区TDZ ( 函数默认值等不明显的TDZ,TDZ作用就是在`let/const`的使用上 )
 > > 变量名唯一，不允许重复声明
 > > 变量归属 ( 以及 `eval()` )
 
@@ -23,6 +22,8 @@ EasyES during every Friday
 > **ES5 关键字 _`var`_ 与 _`let`_ 对比**
 ***
 ## EasyES - Chapter.02 - 解构赋值 2017.09.15
+***
+解构赋值 语法是一个Javascript表达式，这使得可以将值从数组或属性从对象提取到不同的变量中
 ---
 > **1. 数组的解构赋值**
 > > 结构一致，位置对应  
