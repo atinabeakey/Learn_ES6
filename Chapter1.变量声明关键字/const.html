@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //        声明的同时必须进行初始化
+        //        非对象数据类型一经赋值，无法被更改
+        //        针对对象只锁定地址的特殊处理办法 ( Object.freeze() & 递归深冻结 )
+        //        拥有所有 let 关键字的特点
+       /**
+        * // 只要赋值无法被修改
+        const a = 1;
+        a = 2;//报错(TypeError)*/
+
+       /** //const一经声明，必须立刻初始化
+        var a, b, c;
+        const a; //报错*/
+       //声明对象类型
+        const obj = {
+            name:'atina',
+            data:{
+                time:'123'
+            },
+           age : 20
+        }
+        //const obj;//报错(SyntaxError语法错误)
+//        obj.name = 'qm';
+//        console.log(obj)//可以被修改
+//        Object.freeze(obj)//冻结对象下第一层结构的属性值
+//        obj.name = 'beakey';
+//        obj.age = 24;
+//        obj.data.time = '456'
+//        console.log(obj)
+
+        /** //深层冻结(递归)
+        const deepFreeze = function (obj){
+            Object.freeze(obj)
+            console.log( Object.keys( obj ) )
+            Object.keys( obj ).forEach(function (value , index , self){
+                // console.log(typeof obj[value])
+                typeof obj[value] === 'object' && deepFreeze(obj[value])
+            })
+        }
+        deepFreeze (obj)
+        obj.data.time = '456'
+        console.log(obj.data.time)//123*/
+        /*let data = {
+            time:1,
+            age:2,
+            name:'qm'
+        }*/
+        let data =  [1,2,3]
+        for(let i in data) {
+            console.log(data[i])
+        }
+        for (let i of data){
+            console.log(i)
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

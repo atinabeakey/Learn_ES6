@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*//块级作用域
+        {
+            var a = 1;
+            let b = 2;
+        }
+        console.log(window);
+        console.log( Object.getOwnPropertyDescriptor(window, 'a'))
+    //console.log(b);//报错
+
+        //变量提升
+        function fn() {
+            console.log(c); //undefined
+            console.log(b); //报错
+            if (false) {
+                var c = 1;
+                let b = 2;
+            }
+        }
+        fn();*/
+        //暂存死区
+//        {
+//            //TDZ
+//            console.log(a); //undefined
+//            console.log(b); //报错
+//            var a = 1;
+//            //TDZ
+//            let b = 2;
+//        }
+            let a = 1;
+            let a = 2//报错
+
+        //变量归属
+        //用var声明的变量，相当于给window添加[变量名]的自定义属性
+        //用let声明的变量，不添加至window
+    </script>
+</body>
+</html>
