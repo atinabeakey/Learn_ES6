@@ -21,7 +21,7 @@ There are some examples of ES6
 
 > **ES5 关键字 _`var`_ 与 _`let`_ 对比**
 ***
-## EasyES - Chapter.02 - 解构赋值 2017.09.15
+## atinaES6 - Chapter.02 - 解构赋值 2017.09.15
 ***
 解构赋值 语法是一个Javascript表达式，这使得可以将值从数组或属性从对象提取到不同的变量中
 ---
@@ -60,5 +60,5 @@ There are some examples of ES6
 > > 对象：提取JSON数据，函数解构传参，函数返回值解构  
 > > 函数参数默认值：ajax方法
 ***
-## EasyES - Chapter.03 - 字符串扩展
+## atinaES6 - Chapter.03 - 字符串扩展
 ---
