@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+             * //展开运算符
+             let arr = [1, 2, 3];
+             console.log(arr); //[1,2,3]
+             console.log(...arr); //1 2 3
+             let [a,...b] = arr;
+             console.log(a) // 1
+             console.log(b) //[2,3]
+        */
+        //自由组合
+        let arr1 = [1 ,2]
+        let arr2 = ['a' , 'b']
+        let arr3 = [3, 4];
+        arr1.push(arr2 ,...arr3)
+        console.log(arr1)
+        let arr4 = arr1.concat( arr2, arr3 );
+        console.log(arr4)
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

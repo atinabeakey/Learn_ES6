@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+             * //函数参数的解构赋值
+            function fn(a,b,c){
+                console.log(a,b,c)
+            }
+            fn(1,2,3)
+            //模式数组
+            function fn([a,b,c]){}
+            fn([a,b,c])
+            //模式对象
+            function fn({a,b,c}){}
+            fn({a:1,b :2, c:3 })
+            //以上三种形式完全等价
+        */
+        /**
+             * //双层默认值的情况一
+            function fn( {a = 0, b = 1} = {}){
+                console.log(a,b)
+            }
+            // fn({a:1, b:2}) // a:1,b:2
+            // fn() // a:0,b:1
+               fn({a:3}) // a:3,b:1
+        */
+        //双层默认值的情况二(当有值传入的时候默认值失效)
+        function fn ({ aa: a,bb:b } = { aa:0 , bb:1}){
+            console.log(a,b)
+        }
+        fn ({ aa:1, bb:2 }) // 1,2
+        fn() // 0,1
+        fn({ aa:3 })// 3,undefined
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

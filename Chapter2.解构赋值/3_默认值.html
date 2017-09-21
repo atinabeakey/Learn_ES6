@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * //默认值的应用场景：变量声明时
+         let [ a = 0, b = 0, c = 0 ] = [1, 2, 3];
+         console.log(a,b,c)//1,2,3*/
+        /**
+         * //解构失败时默认值生效 
+        let [a = 0, b = 0, c = 7] = [1, 2];
+        console.log(a,b,c)//1,2,7
+        //默认值的特点：模式数组对应位的字面量严格等于undefined(惰性)
+        let [ a = 0, b = 0 ] = [ 1 ];
+        console.log(a,b)
+        // let [ a = 0, b = 0 ] = [ 1, undefined ];*/
+        /**
+         * //惰性求值
+        let [a = 0,b = foo()] = [undefined , undefined]
+        function foo (){
+            console.log('执行');//执行
+            return '返回结果'
+        }
+        console.log(a,b)//0 "返回结果"*/
+        /**
+         * // 默认值可以引用模式数组中的其他变量，但被引用变量必须提前声明
+         let [ a = b, b = 1 ] = [ undefined, undefined ]; //b的暂存死区 错误的例子
+         console.log( a, b );
+        //当一个表达式或者一个运算中出现了undefined的项，就会报错ReferenceError引用错误
+        // let [ a = 1, b = a ] = [ undefined, undefined ]; //正确的例子*/
+        /**
+         * //解析一个从函数返回的数组
+        function f() {
+            return [1, 2];
+        }
+        let [a, b] = f();
+        console.log(a); // 1
+        console.log(b); // 2*/
+        /**
+         * //忽略某些返回值
+        function f() {
+            return [1, 2, 3];
+        }
+
+        var [a, , b] = f();
+        console.log(a); // 1
+        console.log(b); // 3*/
+        //剩余数组赋值给一个变量
+            'use strict'
+        let [a, ...b] = [1, 2, 3];
+        console.log(a); // 1
+        console.log(b); // [2, 3]
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

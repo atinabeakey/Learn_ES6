@@ -9,10 +9,34 @@
         /*let { a, c, b } = { a: 1, b: 2, c: 3 };
         console.log(a,b,c)*/
         /* object 解构赋值 */
-        let {a, b , ...c} = {a:1, b:2 ,c:3, d:4};
+        /**
+         * let {a, b , ...c} = {a:1, b:2 ,c:3, d:4};
         console.log(a); // 1
         console.log(b); // 2
-        console.log(c); // {c:3, d:4}
+        console.log(c); // {c:3, d:4}*/
+        //真正引用的是冒号左边的值
+        /**let { a: aa, b: bb, c: cc } = { a: 1, b: 2, c: 3 };
+        console.log(aa,bb,cc)*/
+        //解构赋值使用圆括号的情况
+        let obj={
+            _id:'asd',
+            data:{}
+        }
+        let device_id,dataInfo;
+        //let {_id:device_id,data:dataInfo} = obj //报错
+        ({_id:device_id,data:dataInfo} = obj)//正确
+        let n;
+        function foo(){
+            console.log(343434)
+        }
+        if(!n){
+            //foo()
+             m=1
+        }
+      //  !n && foo();
+      //  !n && m=1;   //报错
+        !n &&( m=1);   //正确
+
     </script>
 </body>
 </html>
