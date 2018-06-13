@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var re = /[\s\S]/yu;
+			let r = /abc/ig;
+			console.log(r.flags); //gi
+			console.log(r.sticky); //false
+			
+			console.log(re.sticky); //true 查看正则是否使用y修饰符
+			
+			console.log(re.source); //'[\s\S]' 返回正则的正文(es5属性)
+			
+			console.log(re.flags); //'uy' 返回正则表达式的修饰符
+			
+		</script>
+		
+	</body>
+</html>
+  

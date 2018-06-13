@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    Number.isFinite() 验证数字是否有限
+       console.log(Number.isFinite(-3.4));      //true
+       console.log(Number.isFinite(Infinity));  //false
+       console.log(Number.isFinite(NaN));       //false
+       console.log(window);
+       /* 
+       Object.defineProperty() 方法会直接在一个对象上定义一个新属性，
+       或者修改一个对象的现有属性， 并返回这个对象。
+       //存取运算符
+            Object.defineProperty(obj,"newKey",{
+                configurable:true | false,
+                enumerable:true | false,
+                get:function(){
+                    return val;
+                },
+                set:function(newVal){
+                    val = newVal;
+                },
+            });
+            //数据运算符
+            Object.defineProperty(obj,"newKey",{
+                configurable:true | false,
+                enumerable:true | false,
+                value:任意类型的值,
+                writable:true | false
+            });
+        */
+    // a> . writable属性为false时，值不可改变
+        (function () {
+            'use strict';
+             let obj = {};
+            Object.defineProperty(obj ,'a',{
+                writable:false,
+                value:2
+            });
+            obj.a = 4; //报错Cannot assign to read only property 'a' of object
+            return obj.a;
+        }());
+ // b> . Enumerable
+    //   ES5部署Number.isFinite方法
+       /*  (function (global){
+            var global_isFinite = global.isFinite; //isFinite在ES5中属于全局对象下的固有属性
+            Object.defineProperty(Number)
+        })(this); */
+    </script>
+</body>
+</html>

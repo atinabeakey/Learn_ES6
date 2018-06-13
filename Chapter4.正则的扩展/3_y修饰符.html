@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s = '-aaa_aa_a';
+        let r1 = /a+/g;
+        let r2 = /a+/y;
+        console.log(r1.exec(s));//aaa
+        console.log(r2.exec(s));//null
+        console.log(r1.exec(s));//aa
+        console.log(r2.exec(s));//null
+        console.log(r1.test(s));//true
+        console.log(r2.test(s));//false
+        const REGEX = /a/g;
+
+        // 指定从2号位置（y）开始匹配
+        REGEX.lastIndex = 2;
+
+        // 匹配成功
+        const match = REGEX.exec('xaya');
+        console.log(match);
+        
+        // 在3号位置匹配成功
+        console.log(match.index );// 3
+        
+        
+
+        // 下一次匹配从4号位开始
+        REGEX.lastIndex // 4
+
+        // 4号位开始匹配失败
+        REGEX.exec('xaya') // null
+    </script>
+   
+</body>
+</html>

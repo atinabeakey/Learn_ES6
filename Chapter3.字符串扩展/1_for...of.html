@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //for in 只遍历索引
+        for(let i in 'foo'){
+            console.log('foo'[i])
+        }
+
+        //for of  可识别字符串使用码点，其优点是可以识别大于0xFFFF的码点
+        let text = String.fromCodePoint(0x20BB7);
+
+        for (let i = 0; i < text.length; i++) {
+            console.log(text[i]);
+        }
+        // " "
+        // " "
+
+        for (let i of text) {
+            console.log(i);
+        }                                                                                                                                                                                                                                                                                                                                                                                                               
+        // "𠮷"
+    </script>
+</body>
+</html>
