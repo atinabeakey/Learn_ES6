@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Es6将全局方法parseInt和parseFloat()移植到了Number对象上，行为完全保持不变
+        console.log(parseInt(12.23));           //12
+        console.log(parseFloat('12.23#'));      //12.23
+        console.log(Number.parseInt(12.23));    //12
+        console.log(Number.parseFloat('12.23#'));//12.23
+        
+    </script>
+</body>
+</html>
