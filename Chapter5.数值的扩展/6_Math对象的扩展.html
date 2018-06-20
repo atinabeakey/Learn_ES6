@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1> Math.trunc() 用于去除一个数的小数部分，返回整数部分
+            console.log(Math.trunc(1.23));      //1
+            console.log(Math.trunc(-1.23));     //-1
+            console.log(Math.trunc(-0.23));     //-0
+            console.log(Math.trunc(1.93));      //1
+            console.log(Math.trunc('foo'));     //NaN
+            console.log(Math.trunc('12.2'));    //12
+            console.log(Math.trunc());          //NaN
+        //2> Math,sign()  用于判断一个数是正数，负数，还是0
+            /*
+            返回结果：
+                参数为正数，返回1
+                参数为负数，返回-1
+                参数为+0，返回0
+                参数为-0，返回-0
+                其他值，返回NaN    
+             */
+            console.log(Math.sign(5));      //1
+            console.log(Math.sign(-5));     //-1
+            console.log(Math.sign(0));      //0
+            console.log(Math.sign(-0));     //-0
+            console.log(Math.sign('foo'));  //NaN
+            console.log(Math.sign());       //NaN
+
+
+
+            console.log(Math.sin(30));     
+        
+
+    </script>
+</body>
+</html>

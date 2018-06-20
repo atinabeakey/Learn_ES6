@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(Math.pow(2,53));  //9007199254740992
+        //最大值最小值整数范围
+        console.log(Number.MAX_SAFE_INTEGER);  //9007199254740991
+        console.log(Number.MIN_SAFE_INTEGER);   //-9007199254740991
+        
+        //验证是否为安全整数
+        console.log(Number.isSafeInteger(Math.pow(2, 53)));     //false
+        console.log(Number.isSafeInteger(Math.pow(2, 53) -1 )); //true
+        //注意：运算结果是否落在安全整数范围内，不仅要验证结果，还要验证参与运算的每个值
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Number.EPSILON 新增的一个极小的常量(相当于ε)，允许误差范围
+        console.log(Number.EPSILON); //2.220446049250313e-16
+        console.log(Number.EPSILON.toFixed(20)); //0.00000000000000022204
+        //浮点计算不精确，可以用误差范围来判断是否正确
+        console.log(0.1 + 0.2); // 0.30000000000000004
+        console.log(0.1 + 0.2 - 0.3); // 5.551115123125783e-17
+        console.log(5.551115123125783e-17 < Number.EPSILON);  // true
+        
+        //Number.EPSILON的实质是一个可以接受的误差范围
+        function withinErrorMargin(left,right) {
+            return Math.abs(left - right) <Number.EPSILON
+        }
+       
+        console.log(withinErrorMargin (0.1+0.2,0.3));  // true
+        console.log(withinErrorMargin (0.2+0.2,0.3));   //false
+    </script>
+</body>
+</html>
