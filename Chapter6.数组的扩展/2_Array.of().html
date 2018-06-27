@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body> 
+    <script>
+        //Array.of() 将类数组转换为数组
+        // ES5 new Array()和array()，因为参数个数不同，表现形式也会不同
+        console.log(new Array());       //[]
+        console.log(new Array(2));      //[undefined , undefined]
+        console.log(new Array(2,3));    //[2,3]
+        console.log(Array());           //[]
+        console.log(Array(3));          //[ , , ,]
+        console.log(Array(2,3));        //[2,3  ]
+
+        console.log(Array.of());        //[]
+        console.log(Array.of(2));       //[2]
+        console.log(Array.of(2, 3));    //[2,3]    
+    </script>
+</body>
+</html>

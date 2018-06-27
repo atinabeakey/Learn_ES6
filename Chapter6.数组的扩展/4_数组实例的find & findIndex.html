@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body> 
+    <script>
+        //数组的实例 [].find() 查找数组中第一个符合条件的元素
+        /* 
+            参数 :
+                一个回到函数(value,index,arr)
+        */
+        let arr = [1, 4, 5, 6, 9]
+        console.log(arr.find((n) =>  n >5));    //6
+        console.log(arr.find((n) =>  n <1));    //undefined
+        //[].findIndex  查找数组中符合条件的第一个元素的索引值
+        /* 
+            用法和find相同      
+         */
+         console.log(arr.findIndex(( x => x>7)));  //4
+         
+         let arr1 = [null, 1,NaN,undefined]
+         console.log(arr1.findIndex(x => Object.is(NaN,x)));  //2
+         console.log(arr1.findIndex(x => Object.is(undefined,x)));  //3
+         
+        
+
+    </script>
+</body>
+</html>

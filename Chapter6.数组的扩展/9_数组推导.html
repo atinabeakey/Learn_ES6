@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body> 
+    <script>
+        //数组推导
+            let a1 = [1,2,3,4];
+            // let a2 = [ for (i of a1) i*2 ];
+            // console.log(a2);
+        //[].map(function callback(value,index,arr){ return  表达式})
+        //遍历原数组，用回调函数通过新的算法构建一个新的数组
+            let a2 = a1.map(x => x **= 2)
+            console.log(a2); //[1,4,9,16]
+
+        //[].filter(function callback(value ,index,arr){ return 表达式})
+        //遍历原数组，用回调函数通过新的判断条件构建一个新的数组
+            console.log(a1.filter(x => x >3)); //[4]
+       
+            
+    </script>
+</body>
+</html>

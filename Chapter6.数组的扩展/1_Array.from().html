@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>  
+    <script>
+        //Array.from() 将类数组转换为数组
+            //类数组对象
+            let arrayLike = {
+                '0': 'a',
+                '1': 'b',
+                '2': 'c',
+                length: 3
+            };
+            //ES5方法
+            var  arrEs5 = [].slice.call(arrayLike);
+            var  arrEs5_1 = Array.prototype.slice.call(arrayLike);
+            console.log(arrEs5);  //["a", "b", "c"]
+            console.log(arrEs5_1);  //["a", "b", "c"]
+            //ES6方法
+            let arrEs6 = Array.from(arrayLike)
+            console.log(arrEs6); //["a", "b", "c"]
+        //所谓类数组的对象，本质特征只有一点，即必须有length属性。因此，任何有length的对象都可以通过Array.from转换为数组
+            console.log(Array.from({ length: 3 }));  // [undefined, undefined, undefined]
+        //NodeList集合
+            //querySelectorAll返回的是一个类数组的对象 
+            let nodeP = document.querySelectorAll('p');
+            console.log(nodeP instanceof Array); //false
+            console.log(typeof nodeP); //false
+            console.log(nodeP);
+            let nodeArray = Array.from(nodeP);
+            console.log(nodeArray);
+            nodeArray.forEach(function (p) {
+                console.log(p);
+            })
+
+        //arguments 对象
+            function foo() {
+                return Array.from(arguments);
+            }
+            console.log(foo(1,null,'abc',[])); //[1, null, "abc", Array(0)]
+        //字符串(因为字符串也有length属性)
+        //扩展运算符(...)也可以将某些数据结构转换为数组，实现机制是调用背后的遍历器接口
+            let str = 'asdfg';    
+            console.log(str);
+            console.log(Array.from(str));   //["a", "s", "d", "f", "g"]
+            console.log([...str]);      //["a", "s", "d", "f", "g"]
+            
+            
+        /* Array.from可以将各种值转化为真正的数组，并且提供map功能，还可以接受第二个参数，作用类似数组的map,对每个元素处理，
+            将处理后的值放入返回的数组 。
+        */
+            console.log(Array.from([1,2,3] , x => x*x)); // [1, 4, 9]   
+        //将字符串转为数组，返回字符串的长度  
+            function countSymbol(str) {
+                return Array.from(str).length
+            }
+            console.log(countSymbol('abc'));
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body> 
+    <script>
+        //数组的空位 ，数组的某个位置没有任何值
+            console.log(Array(3));
+            console.log(0 in [undefined, undefined]); //true
+            console.log(0 in [, , ,]);  //fasle
+        //以上代码证明数组的0号位值有值，第二个没有值
+        let arr = [, 'a',1];
+        //forEach()
+        arr.forEach((x,i) =>{
+            console.log(i); // 1 2
+        })
+        // filter()
+        console.log(arr.filter(x => true));  //["a", 1]
+        //every()
+         console.log(arr.every(x => x === 'a'));  // false
+        //some()
+        console.log(arr.some(x => x === 'a'));  // true
+        //map()
+        console.log(arr.map(x => x === 'a'));  //[empty, true, false]
+        //join()
+        console.log([, 'a', 1, null, undefined].join('#'));  //#a#1##
+        //toString()
+        console.log([, 'a', 1, null, undefined].toString());  //,a,1,,
+
+    </script>
+</body>
+</html>
