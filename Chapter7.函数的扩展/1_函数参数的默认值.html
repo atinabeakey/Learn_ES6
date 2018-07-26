@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //函数参数的默认值
+        //基本用法
+            function foo(x ,y =1){
+                console.log(x,y); 
+            }
+            foo(2)            //2 1
+            foo(2,3);         //2 3
+            function fn1({x, y=2}) {
+                console.log(x, y); 
+            }
+            // fn1();      //TypeError
+            function fn(x=5) {
+                // let x = 2;      //error
+                // const x = 3  //error
+                var x = 4   //success
+            }   
+            fn()     
+       //与解构赋值默认值结合使用
+            let a = ({x = 2,y = 4} = {}) =>{
+                console.log(x,y);
+            }
+            let a1 = ({x,y } = { x : 2, y : 4}) => {
+                console.log(x, y);
+            }
+            a()   //2 4
+            a1()  //2 4
+            a({x:3,y:2})    // 3 2
+            a1({x:3,y:2})   // 3 2
+            a({x:5})        //5  2
+            a1({x:5})       //5 undefined
+            
+            function name(x,y,z=2) {
+            console.log(x,y,z);
+                
+            }   
+            name(1,2,3)     //1 2 3
+            name(1,2)       //1 2 2
+            name(1,undefined , 2)  //1 undefined 2
+        //函数的length属性
+        //length =  形参个数(给定默认值之前) - 赋予默认值的个数
+            function f(a,b) {} //等价于 f = (a,b) =>{}
+            console.log(f.length);  //2
+            let abc = (a,b=3,c) => {}
+            console.log(abc.length);        //1
+            let abcd = (a, c, b = 3) => { }
+            console.log(abcd.length);       //2
+        //作用域
+        // 如果参数的默认值是变量，则默认值是当前作用域 ，变量是全局作用域
+            /* var  x = 1;
+            let f1 = (x, y = x) =>{
+                // let x = 2;
+                console.log(y);
+            }
+            f1();
+            f1(2) */
+        //如果调用函数时，作用于内部的变量x没有生产，结果不一样
+           /*  let x =1;
+            let f2 = (y = x)=>{
+                let x = 2;
+                console.log(y); 
+            }
+            f2() //1 */
+           /*  function f2(y = x) {
+                var x = 2;
+                console.log(y);
+            }
+            f2() ;  //ReferenceError:x is not defined*/
+        //与抛错结合，设定必须传入的参数
+			let throwIfMissing = (params) => {
+				throw new Error(`Missing parameter ${params}!  `);
+			};
+			let foo1 = ( x, y = throwIfMissing('y') ) => {
+				console.log(x, y);
+			};
+			foo1();
+    </script>
+</body>
+</html>                                 
+
+

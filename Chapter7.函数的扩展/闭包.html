@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        function init(){
+           var age = 12;
+           function name() {
+               console.log(age);
+           }
+           name() 
+        }
+       init()
+    //    var count = 10;   //全局作用域 标记为flag1
+        function add(){
+            a = 3
+            var count = 0;    //函数全局作用域 标记为flag2
+            return function () {
+                count += 1;   //函数的内部作用域        alert(count);
+                console.log(count)
+            }
+        }
+        var s = add();
+        s();//输出1
+        s();//输出2
+        console.log(a)
+        function fn1(){
+            var obj = {
+                name: 'atina',
+                age: 10
+            }
+        }
+        function fn2(){
+            var obj ={
+                name:'atina',
+                age:12
+            }
+            return obj;
+        }
+        var a = fn1()
+        var b = fn2();
+    </script>
+</body>
+</html>                               

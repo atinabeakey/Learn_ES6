@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //函数的name属性，返回函数的名字
+            //直接声明函数
+            console.log(  (function foo(){}).name ) //foo
+            //匿名函数赋值
+                var fn = function () {}
+                console.log(fn.name)    //fn
+                // fn.name = fn1; // 不可修改
+                // console.log(fn)
+            //Function构造函数返回的函数实例，name属性的值为‘anonymou’    
+                console.log( (new Function).name ) //anonymou匿名
+                let x = function f(params) { }
+                console.log(x.name)  // f
+                var name;
+                console.log(typeof name)    //string
+                console.log(typeof sss)     // undefined
+    </script>
+</body>
+</html>                               

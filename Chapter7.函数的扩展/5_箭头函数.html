@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //箭头函数
+            //() =>{} 相当于 function(){}
+            const iseven = n => n % 2 == 0;
+            console.log(iseven(4))
+            const res = (first,...last) => [first, last];
+            console.log(res(1,2,3,4,5)) // [1,[2,3,4,5]]
+            function* countAppleSales() {
+                var saleList = [3, 7, 5];
+                for (var i = 0; i < saleList.length; i++) {
+                    yield saleList[i];
+                }
+            }
+            // 一旦生成器函数已定义，可以通过构造一个迭代器来使用它。
+
+            var appleStore = countAppleSales(); // Generator { }
+            console.log(appleStore.next()); // { value: 3, done: false }
+            console.log(appleStore.next()); // { value: 7, done: false }
+            console.log(appleStore.next()); // { value: 5, done: false }
+            console.log(appleStore.next()); // { value: undefined, done: true }
+
+            function foo() {
+                setTimeout(() => {
+                    console.log(this)  //{id:42}
+                    console.log('id',this.id)
+                }, 100);
+            }
+            foo.call({id:42})
+            let obj = {
+				val: 2,
+				func5: function() {
+					setTimeout(function() {
+						console.log(this.val);
+					}, 100);
+				},
+				func6: function() {
+					setTimeout( () => console.log(this.val), 100 )
+				}
+			};
+			obj.func5(); //undefined
+            obj.func6(); //2
+            function time() {
+                this.seconds = 0
+                setInterval(() =>{
+                    this.seconds ++
+                },1000)
+            }
+            var timer = new time();
+            setTimeout(() => {
+                console.log(timer.seconds)
+            }, 3100);
+            //上面的代码中，timer内部的setInterval函数调用了this.seconds属性，通过箭头函数this指向timer的实例对象，所以输出结果是3
+            let insert = (value) => ({into: (array) =>{ after: (aftervalue) =>{
+                array.splice(array.indexOf(aftervalue)+1 ,0 ,value)
+                return array;
+            }}})  
+    </script>
+</body>
+</html>                               

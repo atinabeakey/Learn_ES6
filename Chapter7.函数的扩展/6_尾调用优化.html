@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //尾递归
+
+            // //非尾递归形式
+            // let factorial = (n) => {
+            //     if (n === 1) return 1;
+            //     return n * factorial(n - 1);
+            // };
+            // console.log( factorial(5) ); //120
+
+            //尾递归形式
+            let factorial = (n, total) => {
+                if (n === 1) return total;
+                return factorial(n - 1, n * total);
+            };
+            console.log(factorial(5, 1)); //120
+
+        //非尾递归形式的阶乘复杂度为O(n)，每次都会因为尾部用到函数内的变量n而在调用栈中形成n个调用记录，如果递归次数较多，则有可能出现栈溢出情况；
+        //尾递归形式的结成复杂度为O(1)，每次在尾部递归时，新的调用帧会取代旧的调用帧，从而在调用栈中只有一条调用记录。 
+
+            
+    </script>
+</body>
+</html>                               

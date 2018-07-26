@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //扩展运算符（...）
+        //好比rest的逆运算，将数组转化为单元素
+            function fn(a, b, c, d, e) {
+                console.log(...arguments); //2， 0， 1， 3， 4
+            }
+           /*  let fn = (a, b, c, d, e) => {
+                console.log(...arguments);  //报错，箭头函数没有arguments  
+            } */
+            let args = [0, 1];
+            fn( 2, ...args, 3, ...[4]);
+        //替代apply
+            //Math.max()例子
+           /*  let arr = [2, 5, 1];
+            console.log( Math.max.apply(null, arr) ); //5
+            console.log( Math.max(...arr) ); //5
+            console.log( Math.max(2, 5, 1) ); //5 等价于以上两种方法
+            let arr1= [1,2,3];
+            let arr2 = [4,5,6]
+            // Array.prototype.push.apply(arr1,arr2) 或者
+            // arr1.push.apply(arr1,arr2);
+            // console.log(arr1) //[1,2,3,4,5,6]
+            arr1.push(...arr2)
+            console.log(arr1) //[1,2,3,4,5,6] */
+
+        //合并数组    
+            let arr1 = [1, 2, 3];
+            let arr2 = [4, 5, 6] ;
+            console.log(arr1.concat(arr2)) 
+        //与解构赋值合用
+            const [first ,...rest] = [1,2,3,4,5];
+            console.log(first) //1
+            console.log(rest)  // [2,3,4,5]
+        //注意：使用扩展运算符的解构赋值，只能放在最后一位
+        
+
+        //将字符串转化为真正的数组
+        let str = 'hello';
+        console.log([...str]) //["h", "e", "l", "l", "o"]
+        //将类数组转化为真正的数组
+        let foo = function (x, y, z) {
+            console.log( arguments instanceof Array ); //false
+            console.log( [...arguments] instanceof Array ); //true
+        };
+        foo(1, 2, 3);
+    </script>
+</body>
+</html>                               
