@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+    //Symbol 是es6引入的一种基础数据类型，类似于字符串，特点是唯一性
+        let sym = Symbol('My school');
+        // console.log('my symbol is' + sym)   // 报错
+        // console.log(`my symbol is ${sym}`)  //报错
+        console.log(String(sym));               //Symbol(My school)
+        console.log(sym.toString());           //Symbol(My school)
+        console.log(Boolean(sym));             //true
+        console.log(!sym);             //false
+        // console.log(Number(sym));             //TypeError
+    //必须使用方括号引用，不能使用点运算符
+        let mySym = Symbol();
+        let a = {};
+        // a[mySym] = 'hello';
+        console.log(a[mySym])   //hello
+        console.log(a.mySym)        //undefined
+
+    </script> 
+</body>
+</html>                                 
+
+

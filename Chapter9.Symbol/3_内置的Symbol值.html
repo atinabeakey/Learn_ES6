@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //[Symbol.isConcatSpreadable]
+			//对象下内置的Symbol值，用于描述该对象是否可以展开，布尔值
+			let arr = [1, 2];
+            let a = ['c','d'];
+
+			console.log( a[Symbol.isConcatSpreadable] ); //undefined 内置属性不可打印，但是数组默认为true
+			a[Symbol.isConcatSpreadable] = false;
+			console.log( a[Symbol.isConcatSpreadable] ); //false 更改后可打印
+			let arr1 = arr.concat(a, 5);
+//			arr.concat([4, 5], 6);
+			console.log(arr1) //[1, 2, ['c','d'] , 5]
+			
+			//如果是类数组对象，则[Symbol.isConcatSpreadable]默认为false，如需展开，则需手动更改为true
+			
+          
+    </script> 
+</body>
+</html>                                 
+
+

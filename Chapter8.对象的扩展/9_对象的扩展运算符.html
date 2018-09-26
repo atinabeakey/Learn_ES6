@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //所有可遍历但尚未被读取的属性，分配到指定的对象上
+            let {x, y, ...z } = {x: 2, y:3, a:4,b:5}
+            console.log(x)          //2
+            console.log(y)          //3
+            console.log(z)          //{a:4,b:5}  相当于Object.assign( {}, {a:4,b:5} )
+        //rest参数是浅拷贝，
+            /*   let obj = { a:{b: 1} }
+                let {...m} = obj;
+                console.log(m)
+                
+                let n = {a: 1,b:3}
+                let p ={...n}
+                let q = {}
+                console.log(p)
+                console.log(Object.assign(q,n))*/
+        //合并多个对象
+            let o1 = {x:1}
+            let o2 = {y:1}
+            let o3 = {...o1,...o2}
+            console.log(o3)   //{x:1,y:1}
+        //重写对象
+           /*  let a = {x:1 ,y:2}
+            let awith = {...a,x:11} 
+            console.log(awith)  //{x: 11, y: 2} */
+
+        //定义默认值
+            const defaults = {x:1,y:2}
+            let a = {x:2}
+            let awith = {...defaults,...a}
+            console.log(awith)  //{x: 2, y: 2}
+    </script>  
+</body>
+
+</html>

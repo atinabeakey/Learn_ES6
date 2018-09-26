@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //6种遍历方式
+            // 1.for in 遍历对象自身以及继承的可枚举属性 （不含symbol）
+            let obj = {
+                a: 1,
+                b: 2,
+                c: 'nan',
+            //    [ Symbol()] :5
+            }
+            obj[Symbol('d')] = 4;
+            for(let i in obj){
+                console.log(i)
+            }
+
+            // 2. Object.keys() 返回数组，对象自身的所有可枚举的属性
+            console.log(Object.keys(obj)) // ["a", "b", "c"]
+            
+            // 3.Object.getOwnPropertyNames(obj) 返回数组 ，包含自身的所有属性（不含symbol,包括不可枚举属性）
+            console.log(Object.getOwnPropertyNames(obj))
+            
+            // 4.Object.getOwnPropertySymbols(obj)  返回一个数组，包含对象自身的所有symbol属性
+            console.log(Object.getOwnPropertySymbols(obj)) //[Symbol(d)]
+
+            // 5.Reflect.ownKeys() 返回一个数组，包含对象自身的所有属性（不管是symbol还是不可枚举的属性）
+            console.log( Reflect.ownKeys( obj ) );  //["a", "b", "c", Symbol(d)]
+
+            //6.Reflect.enumerate() chrome不支持
+
+            //以上6中遵循：先遍历键为数值的属性，然后遍历字符串，最后symbol
+
+            console.log( Reflect.ownKeys( { [Symbol()]:0, a: 1, 2: 3 } ) ) //["2", "a", Symbol()]
+    </script>
+</body>
+
+</html>

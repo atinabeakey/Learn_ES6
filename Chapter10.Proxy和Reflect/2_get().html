@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        span {
+            background: #f00;
+            white-space: pre
+        }
+    </style>
+</head>
+
+<body>
+    <span>hhhhh</span>
+    <script>
+        //handler中的get()方法拦截实例
+            //不存在的属性会报错，默认返回undefined
+            var person = {
+                name: 'Atina'
+            }
+            let proxy = new Proxy( person, {
+                get(target,key){
+                    if(key in target){
+                        console.log(key);
+                        return target[key];
+                    }else{
+                        throw new ReferenceError(`${key} does not exist`)
+                    }
+                }
+            });
+            console.log(proxy.name)  //Atina
+            console.log(proxy.age)      //报错
+        // key in target 以及 target.hasOwnProperty( key )
+        let proto = {
+            name: 'John'
+        };
+        let target = Object.create(proto);
+        target.age = 27;
+        target[Symbol.for('mySymbol')] = 1;
+        Object.defineProperty(target, 'sex', {
+            value: 'male',
+            enumerable: false
+        });
+        console.log(target); //{age: 27, sex: "male", Symbol(mySymbol): 1}
+        console.log(Object.getPrototypeOf(target)); //{name: "John"}
+        // target的属性列表
+        // {
+        //     name: 'John', //继承属性
+        //     [Symbol.for('mySymbol')]: 1, //自身Symbol属性
+        //     target.age = 27, //自身可枚举属性
+        //     sex: 'male' //自身不可枚举属性
+        // }
+        // key in target 自身以及继承
+        console.log('name' in target); //true
+        console.log([Symbol.for('mySymbol')] in target); //Error
+        console.log('age' in target); //true
+        console.log('sex' in target); //true
+
+        // target.hasOwnProperty( key ) 自身
+        console.log(target.hasOwnProperty('name')); //false
+        console.log(target.hasOwnProperty([Symbol.for('mySymbol')])); //Error
+        console.log(!!Object.getOwnPropertySymbols(target)); //true
+        console.log(target.hasOwnProperty('age')); //true
+        console.log(target.hasOwnProperty('sex')); //true
+    </script>
+</body>
+
+</html>

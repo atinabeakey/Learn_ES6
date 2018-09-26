@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        *{
+            margin: 0;padding: 0
+        }
+        span{
+            background: #f00;
+            white-space:pre
+        }
+    </style>
+</head>
+<body>  
+    <span>hhhhh</span>
+    <script>
+    //Proxy(代理器，拦截器)概述
+        //可以修改某些操作的默认行为，等同于在语言层面做出修改，属于语言层面的'无编程'
+        /*  用new Proxy (target，handler)实例化proxy对象，
+        针对target对象进行拦截，拦截器逻辑写在handler中，两个参数必填*/
+        var obj = new Proxy({}, {
+           get(target, key ,receiver){
+               console.log(target)
+                console.log(`getting ${key}`)
+               console.log(receiver);
+               return Reflect.get(target, key, receiver)
+           } ,
+           set(target, key, value,receiver){
+               console.log(`setting ${key}`)
+               return Reflect.set(target,key,value,receiver)
+           }
+        })
+        obj.count = 1;  //setting count
+        obj.count ++ //getting count -> setting count
+
+        //Proxy 实例也可以做其他对象的原型函数
+        var proxy = new Proxy({},{
+            get(target,key){
+                console.log( `getting the key of ${key}` );
+                return 35;
+            }
+        });
+        let obj1 = Object.create(proxy);
+        console.log(obj1.time)
+        proxy.count = 10;
+        console.log(proxy.count) //35
+    </script> 
+</body>
+</html>                                 
+
+

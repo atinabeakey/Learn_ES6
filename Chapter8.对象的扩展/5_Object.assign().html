@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //Object.assign(target,source)将源对象的所有可枚举属性复制到目标对象
+            //如果存在同名属性，则后面的将会覆盖前面的
+               /*  var target = {a:1,b:1};
+                var source1 = {b:2};
+                var source2 = {c:2};
+                Object.assign(target, source1, source2)
+                console.log(target)         //{a:1,b:2,c:3} */
+            //处理数组，将其视为对象
+                // console.log(Object.assign([1,2,3],[4,5])) //[4, 5, 3]
+           //克隆对象
+            /* let obj1 = {a:1,b:2};
+                function clone(origin) {
+                    return Object.assign({},origin)
+                }
+                let obj2 = clone(obj1);
+                console.log(obj2) //{a: 1, b: 2} */
+           //合并多个对象
+                const merge = (target, ...others) => Object.assign(target, ...others);
+    			let obj1 = { a: 1 };
+    			merge( obj1, { b: 2 }, { c: 3 } );
+    			console.log( obj1 ); //{ a: 1, b: 2, c: 3 }
+    			const merge1 = ( ...sources ) => Object.assign( ...sources );
+    			let obj = merge1( {a: 1}, {b: 2} );
+                console.log( obj ); //{ a: 1, b: 2 }
+            //指定默认值
+                // const defaults = {a:1};
+                // const processContent = (target) =>{
+                //     Object.assign(target,defaults)
+                // }
+                // let obj ={b:2}
+                // processContent(obj)
+                // console.log(obj)    //{b: 2, a: 1}
+        
+
+    </script> 
+</body>
+</html>                                 
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //Symbol.for(key)
+            //根据相同的key值，创建或者重复利用同一个symbol
+            let s1 = Symbol.for('foo');
+            let s2 = Symbol.for('foo');
+            console.log( s1 === s2 ); //true
+            //Symbol.for(key)与Symbol(key)异同点
+            //相同点：都会创建一个Symbol值
+            //不同点：Symbol.for(key)存在登记机制，将key值登记在全局环境中以供搜索。如果全局中无相应key的Symbol，则创建。如果有，则返回，不再创建。
+            //Symbol(key)没有登记机制，即使使用同样的key，也会重新创建一个全新的Symbol
+            //Symbol.for(key)是在全局环境中登记的，所以iframe和service worker中也能取到同样的Symbol
+            //Symbol.keyFor(Symbol)
+            //返回一个已登记的Symbol的key值
+            // let s1 = Symbol.for('foo');
+            // console.log( Symbol.keyFor(s1) ); //foo
+            // let s2 = Symbol('foo');
+            // console.log( Symbol.keyFor(s2) ); //undefined 由于Symbol(key)不存在登记机制
+
+            let iframe = document.createElement('iframe');
+            iframe.src = String(window.location);
+            document.body.appendChild(iframe);
+
+            console.log(iframe.contentWindow.Symbol.for('foo') === Symbol.for('foo'))  //true
+    </script> 
+</body>
+</html>                                 
+
+

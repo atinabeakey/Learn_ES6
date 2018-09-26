@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //Object.getOwnPropertyDescriptor()
+        //对象的每个属性都有一个描述对象
+        let a = {
+            foo: 123
+        };
+        console.log(Object.getOwnPropertyDescriptor(a, 'foo'))
+        /*  {
+             configurable: true,
+             enumerable: true,
+             value: 123,
+             writable: true
+         } */
+        //可枚举的对象，是该对象的enumerble = true
+        //ES5三种：
+        //for in ：遍历对象所有可枚举属性的key,包括继承来的
+        //Object.keys()返回自身所有可枚举属性的键名
+        //JSON.stringify() 串行化自身可枚举的属性
+
+        //ES6两种：
+        //Object.assign() 只复制对象中可枚举的对象
+        //Reflect.enumerate() 同for in (浏览器不支持)
+
+        /* let obj = {};
+        Object.defineProperty(obj, 'a', {
+            value: 1,
+            writable: true,
+            enumerable: false,
+            configurable: false
+        });
+        obj.a.enumerable = true
+        console.log(obj.a.enumerable);  //undefined */
+        let obj = {
+            a: 1,
+            b: 2
+        }
+        for (let i in obj) {
+            console.log(i); // key  
+        }
+        console.log(Object.keys(obj))
+        var obj1 = {
+            x: 1,
+            y: 2
+        };
+
+        for (var name of Reflect.enumerate(obj1)) {
+            console.log(name);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //属性名表达式，用字符串
+            //外部定义
+                let obj = new Object();
+                obj.name = 'JK';
+                obj['a'+'g'+'e'] = 23;
+                console.log(obj); // {age:23,name:'JK'}
+            //内部定义
+                let foo = 'name';
+                let obj1 = {
+                    [foo]: 'jk',
+                    ['a'+'g'+'e']: 24
+                }
+                console.log(obj1) //{name: "jk", age: 24}
+                console.log(obj1[foo])      //jk
+                console.log(obj1['name'])   //jk
+
+            //注意：属性名表达式和简洁表示法不能同时使用，否则会报错
+                var str = 'bar';
+                var bar = 'abc';
+                // var baz = { [foo] };  //报错
+                var baz = { str };  //报错
+                console.log(baz); //{str: "bar"}
+                var str1 = {[str]: 'abc'}  ;
+                console.log(str1)   //{bar: "abc"}
+            //内部方法
+                let fn = `name`;
+                let obje = {
+                    [`get` + fn]() {
+                        console.log('Jon');
+                    }
+                };
+                obje.getname();
+                obje[`get`+fn]();
+                let f = (str) => str.repeat(2);
+                    let obj3 = {
+                        [f('name')]() {
+                            console.log(this);
+                        }
+                    }
+                    console.log(obj3) //{namename: ƒ}
+    </script> 
+</body>
+</html>                                 
+
+
