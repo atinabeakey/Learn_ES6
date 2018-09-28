@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //handler中的set()方法拦截实例
+        //拦截某个属性的赋值操作
+            const validator = {
+                set (obj,prop,val){
+                    if(prop === 'age'){
+                        if( !Number.isInteger(val) ){
+                            throw new TypeError('The age is not an integer')
+                        }
+                        if(val > 100){
+                            throw new RangeError('The age seems invalid')
+                        }
+                    }
+                    obj[prop] = val;
+                }
+            }
+            const person = new Proxy({}, validator )
+            person.age = 1;
+            console.log(person.age)
+            // console.log(person.age = 200)  //The age seems invalid
+            // console.log(person.age = 'small') //The age is not an integer
+
+        //限制某些私有属性不被修改与读取 
+            const handler = {
+                get (target , key){
+                    invariant(key,'get');
+                    return target[key]
+                },
+                set(target , key , value){
+                    invariant(key , 'set');
+                    return true;
+                }
+            }
+            const invariant = (key, action) =>{
+                if(key[0] === '_'){
+                    throw new Error(`Invalid attempt to ${key} private`)
+                }
+            }
+            const target = {
+                name: 'Atina',
+                _id: 'vvdfdf'
+            }
+            const proxy = new Proxy(target , handler);
+            console.log(proxy.name)
+            console.log(proxy._id)
+    </script>
+</body>
+
+</html>

@@ -25,22 +25,22 @@
     <span>hhhhh</span>
     <script>
         //handler中的get()方法拦截实例
-            //不存在的属性会报错，默认返回undefined
-            var person = {
-                name: 'Atina'
-            }
-            let proxy = new Proxy( person, {
-                get(target,key){
-                    if(key in target){
-                        console.log(key);
-                        return target[key];
-                    }else{
-                        throw new ReferenceError(`${key} does not exist`)
-                    }
+        //不存在的属性会报错，默认返回undefined
+        var person = {
+            name: 'Atina'
+        }
+        let proxy = new Proxy(person, {
+            get(target, key) {
+                if (key in target) {
+                    console.log(key);
+                    return target[key];
+                } else {
+                    throw new ReferenceError(`${key} does not exist`)
                 }
-            });
-            console.log(proxy.name)  //Atina
-            console.log(proxy.age)      //报错
+            }
+        });
+        console.log(proxy.name) //Atina
+        // console.log(proxy.age)      //报错
         // key in target 以及 target.hasOwnProperty( key )
         let proto = {
             name: 'John'
@@ -63,16 +63,34 @@
         // }
         // key in target 自身以及继承
         console.log('name' in target); //true
-        console.log([Symbol.for('mySymbol')] in target); //Error
+        // console.log([Symbol.for('mySymbol')] in target); //报错
         console.log('age' in target); //true
         console.log('sex' in target); //true
 
         // target.hasOwnProperty( key ) 自身
         console.log(target.hasOwnProperty('name')); //false
-        console.log(target.hasOwnProperty([Symbol.for('mySymbol')])); //Error
+        // console.log(target.hasOwnProperty([Symbol.for('mySymbol')])); //报错
         console.log(!!Object.getOwnPropertySymbols(target)); //true
         console.log(target.hasOwnProperty('age')); //true
         console.log(target.hasOwnProperty('sex')); //true
+
+        //实现读取数组负值索引
+        const createArr = (...arg) => {
+            const handler = {
+                get(target, key) {
+                    let index = Number(key);
+                    if (index < 0) {
+                        key = String(target.length + index);
+                    }
+                    return Reflect.get(target, key)
+                }
+            }
+            return new Proxy([...arg], handler);
+        }
+       
+        let arr = createArr('a', 'c', 'g');
+        console.log(arr)
+        console.log(arr[-1])
     </script>
 </body>
 

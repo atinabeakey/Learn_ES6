@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //Proxy.revocable方法返回一个可取消的Proxy实例
+            //proxy属性是Proxy的实例对象
+			//revoke属性是函数，可以取消Proxy实例
+
+        const target  = {};
+        const handler = {};
+        let {proxy ,revoke} = Proxy.revocable(target, handler);
+        proxy.foo = 123;
+        target.abc = 456;
+        console.log(proxy.foo) //123
+        console.log(target.abc) //456
+        revoke();
+        console.log(target.abc) //456
+        console.log(proxy.foo) //报错看                  
+    </script>
+</body>
+
+</html>

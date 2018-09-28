@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //Reflect对象的设计目的
+			/* 1. 规范Object下某些明显属于语言层面的方法，放置在Reflect中
+			2. 返回结果由抛错改为布尔值
+			3. 规范Object下某些命令式的操作，在Reflect中统一使用函数行为
+			4. 与Proxy对象的方法一一对应，只要是proxy对象的方法就能在reflect对象上找到对应的方法
+            即使某个对象被拦截，依然可以使用Reflect对象下配置的方法进行默认行为操作
+				 */		
+			//Reflect下的方法
+			//console.log( Reflect );
+				//Reflect.get( target, property, receiver )
+				//Reflect.set( target, property, value, receiver )
+				//Reflect.has( target, property )
+				//Reflect.construct( target, property, receiver )
+				//Reflect.deleteProperty( target, property )
+				//Reflect.getPrototypeOf( target, property, receiver )
+				//Reflect.setPrototypeOf( target, property, receiver )
+				//Reflect.apply( target, property, receiver )               
+    </script>
+</body>
+
+</html>
