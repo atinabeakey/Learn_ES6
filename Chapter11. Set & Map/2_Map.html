@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        //Map 
+
+        //基本用法(子元素唯一)
+        // 用set添加
+        // const m = new Map();
+        // const o = {p: "hello world"};
+        // m.set( o, "content" );
+        // console.log(m); // {{…} => "content"}
+        // console.log( m.get( o ) ) // "content"
+        //用数组直接创建
+        // const map = new Map([['name','zx'],['title','author']]);
+        // console.log(map)      //{"name" => "zx", "title" => "author"}
+        // console.log(map.size) //2
+        // console.log(map.get('name')) //  'zx'
+        //对同一键多次赋值，后一次的值覆盖了前一次的值
+        // const m = new Map().set(1, 'a').set(1, 'b');
+        // console.log( m ) // {1 => "b"}
+        // const m = new Map([
+        //     [1, 'a'],
+        //     [1, 'b']
+        // ]);
+        // console.log(m); // {1 => "b"}
+        //注意：
+        // 1.键名只要严格相等则视为同一个键
+        // 2.对象{}和{}地址不同，不能视为同一个键
+        // 3.0和-0严格相等，视为同一键
+        // 4.虽然NaN不严格相等，但是Map将其视为同一个键
+
+
+        // 实例的属性
+        //size属性：返回Map结构的成员总数    
+        let map = new Map().set('foo', 1).set('bar', 3);
+        console.log(map) //{"foo" => 1, "bar" => 3}
+        console.log(map.size) //2
+
+        //操作方法
+        // set(key, val) 设置(添加)成员，返回Map自身
+        map.set('foo', 4);
+        console.log(map)
+        // get(key) 获取成员，返回成员键名
+
+        // has(key) 判断是否含有该成员，返回是否存在的布尔值
+
+        // delete(key) 删除成员，返回是否成功的布尔值
+
+        // clear() 清空成员
+        //遍历方法
+        // keys() 返回键名遍历器对象
+
+        // values() 返回键值遍历器对象
+
+        // entries() 返回[键名, 键值]遍历器对象
+        // 由于Map.prototype[Symbol.iterator] === Map.prototype.entries，所以可以直接遍历
+
+        // forEach() 遍历方法
+
+        // 用扩展运算符(...)快速转化为数组
+        let m = new Map([
+            [1, 'a'],
+            [2, 'b'],
+            [3, 'c']
+        ]);
+        console.log(m.keys()); // [1, 2, 3]
+        console.log([...m.keys()]); // [1, 2, 3]
+        console.log([...m.values()]); // ["a", "b", "c"]
+        console.log([...m.entries()]); // [Array(2), Array(2), Array(2)]
+        console.log([...m]); // [Array(2), Array(2), Array(2)]
+    </script>
+</body>
+
+</html>
