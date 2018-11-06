@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//Generator函数中的this
+				//Generator函数返回的遍历器对象是Generator的实例，
+				function* foo(){
+					this.a = 1;
+					yield this.b = 2;
+					yield this.c = 3;
+				}
+				foo.prototype.hello = function () {
+					console.log('hello')
+				}
+				foo.prototype.num = 2;
+				const f = foo();
+				// console.log(f.a)     		//undefined    
+				// console.log(f.b)			//undefined
+				// f.hello()              		//hello
+				// console.log(f.num)			//2
+				//取不到this的值是因为Generator总返回的是遍历器对象，并不是this对象
+				// 采用如下变通方式:使用bind方法绑定Generator函数内部的this
+				//用next执行内部的this赋值
+				const obj = {};
+				const g = foo.bind(obj)()
+				console.log(obj.a)  // undefined
+				console.log(g.next())
+				console.log(obj.a) 
+		</script>
+	</body>
+</html>
