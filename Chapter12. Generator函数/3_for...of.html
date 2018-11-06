@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        // for...of
+           /*  // 自动遍历函数，不在需要调用next方法
+            function* f(){
+                yield 1;
+                yield 2;
+                yield 3;
+                yield 4;
+                return 5;
+            }
+            // 注意一旦done的属性为true时，for of 循环自动结束，并且不返回这次的值
+            for(let val of f()){
+                console.log(val)  //1 2 3 4 return的返回值不返回
+            }  
+
+            //斐波那契数列
+                function* fibonacci(){
+                    let [prev, curr] = [0,1];
+                    for(;;){
+                        [prev,curr] = [curr , prev+ curr];
+                        yield curr;
+                    }
+                }
+                for(let n of fibonacci()){
+                    if(n > 1000) break;
+                    console.log(n)
+                } */
+            //for..of,(...)扩展运算符，赋值解构、Array.from()内部都调用的是interator（遍历器）接口
+            function* num(){
+                yield 1;
+                yield 2
+                return 3;
+                yield 4;
+            } 
+            for(let key of num()){
+                console.log(key)  // 1 2
+            }
+            console.log(Array.from(num()))  // [1,2]
+            let [x,y] = num();
+            console.log(x,y) // 1 2
+            // 利用for of遍历对象(为对象的原型增加遍历器接口)
+            const obj = function* (obj){
+                console.log(obj)
+                const props = Reflect.ownKeys(obj);
+                for(let prop of props){
+                    yield [prop , obj[prop]]
+                }
+            }
+            let jone = {
+                first: 'jone',
+                second: 'atian'
+            }
+            for(let [key,value] of obj(jone)){
+                console.log(`${key},${value}`)   //first,jone;  second,atian 
+            }
+    </script>  
+</body>
+</html>                                 
+
+
+
+
+
+
+.
+
+

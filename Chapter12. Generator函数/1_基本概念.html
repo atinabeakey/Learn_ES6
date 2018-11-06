@@ -10,91 +10,85 @@
 </head>
 <body>  
     <script>
-    //set 
+    //Generator
         
-        //基本用法(子元素唯一)
-        /* let s = new Set( [1,2,3,1,3,4])
-            // 1.set 属于类数组的对象
-               console.log( s )     //Set(4) {1, 2, 3, 4}
-               console.log(typeof s )   //object
-               console.log( Object.prototype.toString.call(s) )  //[object Set]
-            // 2.键值对完全相等
-            s.forEach((key ,value) => {
-                console.log( [ value, key ] )  // [1,1]...[4,4]
-            });
-            //3. 对于对象而言，认为所有对象的地址均不相等
-                let s1 = new Set( [ {}, {} ] );
-                console.log( s1 ); //{ {}, {} }
+        //基本概念
 
-            //4. 对于NaN而言，认为所有NaN均相等
-                let s2 = new Set( [NaN, NaN] );
-                console.log( s2 ); //{ NaN }
-                let s3 = new Set( [null, undefined,undefined,null])
-                console.log(s3)  //{null,undefined} */
-       /*  //实例的属性
-            //属性constructor默认就是set函数
-            //属性size，相当于数组的length，返回长度
-                let s = new Set( [1, 2, 5, 3] );
-                console.log( s.size ); //4
-        //实例的操作方法
-            // 1.add(value):添加元素，返回添加后的set对象
-                let s1 = new Set();
-                s1.add(1).add(2)
-                console.log(s1)  //{1,2}
-            // 2.delete(value):删除元素，返回布尔值，表示删除是否成功
-                // s1.delete(2);
-                // console.log( s1.delete(2))  //false
-                console.log(s1)  //{1}
-            // 3.has(value) 返回布尔值，表示参数是否为set的成员
-                console.log(s1.has(1)); //true
-            //4. clear()清除所有成员  
-                s1.clear()  
-                console.log(s1) // {}
- */
-            //实例的遍历操作
-            let s = new Set(['red','green','blue']);
-                // 1.keys() :返回一个键名的遍历器
-                for(let item of s.keys()){
-                    console.log(item) //red , green, blue
+            // //es6提供的一种异步编程解决方案
+            //    /* //特征：
+            //         function 与函数名之间有一个*
+            //         返回遍历器对象
+            //         用next 改变内部指针
+            //         多个yield 一个return
+            //       */
+            //     function* helloGenerator() {
+            //         yield 'hello';
+            //         yield 'world';
+            //         return 'ending';
+
+            //     }
+            //     const hw = helloGenerator();
+            //     console.log(hw.next())  // { value: "hello", done: false }
+            //     console.log(hw.next())  // { value: "world", done: false }
+            //     console.log(hw.next())  //{ value: "ending", done: true }
+            //     console.log(hw.next())  //{value: undefined, done: true}
+           /*  // 惰性函数
+                // 必须对遍历器对象执行next方法才能改变指针并执行改变过程中的语句
+                function* f() {
+                     yield console.log(1 + 2); //3
                 }
-                // 2.values():返回一个键值的遍历器
-                for(let item of s.values()){
-                    console.log(item)   //red , green, blue   //由于Set结构中，key和value完全相等，所以keys方法和values方法结果相同
-                }
-                //3. entries():返回一个键值对的遍历器
-                for ( let item of s.entries() ) {
-						console.log(item); //["red", "red"] ["green", "green"] ["blue", "blue"]
-				}
-            //注意：   
-            console.log(Set.prototype[Symbol.iterator] === Set.prototype.values)  // true
-            //这就说明Set对象的默认遍历器就是values的返回值。可以省略values方法，直接用Set遍历
-            for(let item of s){
-                console.log(item) //red , green, blue  
-            }
-            //扩展运算符(...)内部使用for。of循环，也就可以直接使用Set上
-            console.log(...s) //red green blue
-            //应用例子
-					//数组去重  Array.from( new Set( array ) ) | [ ...new Set( array ) ] ;
-                    let array = [2, 3, 4, 5, 6, 4, 5]
-                    console.log(Array.from(new Set(array)))
-					//数组并集 
-                    const union = (a, b) => { [ ...new Set( [ ...a, ...b ] ) ] | Array.from( new Set( [ ...a, ...b ] ) ) };
-					//数组交集 const intersect = (a, b) => { [...new Set(a)].filter( x => new Set(b).has(x) ) };
-					//数组差集 const difference = (a, b) => { [...new Set(a)].filter( x => !new Set(b).has(x) ) };
-            let a = [1,2,3];
-            let b = [2,3,4];
-            let intersect = [...new Set([...new Set(a)].filter((x) => !new Set(b).has(x)))];
-            console.log(intersect)  //[2, 3]
-            //Set遍历修改自身 const syncModify = (set, handler) => { set = new Set( [...set].map(fn) ) };
-													//= (set, handler) => { set = new Set( Array.from( set, fn ) ) };
-           /*  let set = new Set ([1,2,3,4]);
-            set = new Set([...set].map(val => val*2))
-            console.log(set)   //set的值是2,4,6,8 */
-            let set = new Set([1, 2, 3, 4]);
-            set = new Set(Array.from(set, val => val*2));
-            console.log(set) //set的值是2,4,6,8
+                const g  = f();
+                setTimeout(() => {
+                    console.log(g.next()); //  {value: undefined, done: false}
+                    console.log(g.next()); // {value: undefined, done: true}
+                }, 2000); */
+
+            //yield语句
+                //只能存在于当前代码块为Generator函数中，不能存在于普通函数中
+                    const arr = [1, [[2, 3], 4], [5]];
+                    //错误
+                    // const flat = function* (a) {
+                    //     a.forEach((item) => {
+                    //             console.log(item)
+                    //         if(typeof item === "number"){
+                    //             yield* flat(item);
+                    //         }else{
+                    //             yield item;  //语法错误
+                    //         }
+                    //     });
+                    // }    
+                      
+                    //正确 
+                    const flat = function* (a) {
+                        const len = a.length;
+                        for(let i = 0;i<len;i++){
+                            const item = a[i];
+                            if(typeof item !== 'number'){
+                                yield* flat(item);
+                            }else{
+                                yield item;
+                            }
+                        }
+
+                    }
+                    for (let f of flat(arr)) {
+                        console.log(f); // 1 2 3 4 5
+                    } 
+
+                    //任何一个对象的Symbol.iterator方法等于该对象的遍历器对象生成函数，调用该函数返回该对象的一个遍历器
+                    //遍历器对象本身也有Symbol.iterator方法，执行后返回自身
+                    function* gen(params) {
+                        
+                    }
+                    const g = gen();
+                    console.log(g[Symbol.iterator]() === g)  //true
     </script>  
 </body>
 </html>                                 
 
 
+
+
+
+
+.

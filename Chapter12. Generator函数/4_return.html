@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			// Generator.prototype.return()
+				// Generator函数返回的遍历器对象的return方法，可以返回给定的值，并终结Generator函数的遍历
+				// function* f() {
+				// 	yield 1;
+				// 	yield 2;
+				// 	return 3;
+				// }
+				// const g = f();
+				// console.log( g.next() ); // {value: 1, done: false}
+				// console.log( g.return('foo') ); // {value: "foo", done: true}
+				// console.log( g.next() ); // {value: undefined, done: true}
+
+				// 如果Generator函数内部有try...finally代码块，return方法则会推迟到finally代码块执行完再执行
+				// function* f() {
+				// 	yield 1;
+				// 	try {
+				// 		yield 2;
+				// 	} finally {
+				// 		yield 3;
+				// 	}
+				// 	yield 4;
+				// }
+				// const g = f();
+				// console.log( g.next() ); // {value: 1, done: false}
+				// console.log( g.next() ); // {value: 2, done: false}
+				// console.log( g.return(5) ); // {value: 3, done: false}
+				// console.log( g.next() ); // {value: 5, done: true}
+				// console.log( g.next() ); // {value: undefined, done: true}
+
+
+		</script>
+	</body>
+</html>

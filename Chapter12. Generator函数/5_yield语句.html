@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//yield*
+				// Generator函数内部调用另一个Generator函数，默认无效
+				// 需要使用yield*函数
+				// 被调用的generator函数如果没有返回值，则在这个函数遍历结束后，会替换整个yield*语句
+				// 相当于加入了一个for of循环，并且可以捕捉到返回值
+				// 1.无效实例
+				/* function* foo(){
+					yield 1;
+					yield 2;
+					return 3;
+				}
+				// function* bar(){
+				// 	yield 'a';
+				// 	foo();
+				// 	yield 'b';
+				// }   输出结果是： a  b 
+				function* bar(){
+					yield 'q';
+					yield* foo();
+					yield 'b'
+				}    //输出结果是： q   1   2  b
+				for (let v of bar()){
+					console.log(v)    // a  b
+				}
+				const g = bar();
+				console.log(g.next()) //{value: "q", done: false}
+				console.log(g.next())  //{value: 1, done: false}
+				console.log(g.next())   // {value: 2, done: false}
+				console.log(g.next())		// {value: "b", done: false}
+				console.log(g.next())   //{value: undefined, done: true}
+ */
+				function* f(){
+					yield 1;
+					yield* [2,3];
+					yield 4;
+				}
+				for(let v of f()){
+					console.log(v)   // 1 2 3 4
+				}
+				//递归思想，遍历多维数组的所有成员
+				function* iterTree(tree){
+					if( Array.isArray(tree)){
+						for (let i = 0; i < tree.length; i++){
+							yield* iterTree(tree[i])
+						}
+					}else{
+						yield tree;
+					}
+				}
+				const tree = ['a' ,['b','c',['d','e']], 'g',['h',1]]
+				for(let v of iterTree(tree)){
+					console.log(v)  //a b c d e g h 1
+				}
+		</script>
+	</body>
+</html>

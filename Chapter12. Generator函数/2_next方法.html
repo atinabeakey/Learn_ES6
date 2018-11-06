@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        .box{
+            width:100px;
+            height: 100px;
+        }
+        .box2{
+           border: 100px solid #f00;
+           border-bottom-color:transparent; 
+           border-left-color:transparent; 
+            border-top-right-radius: 4px
+        }
+
+    </style>
+</head>
+<body>  
+<div class="box">
+    <div class="box2"></div>
+</div>
+   
+    <script>
+    //nest 方法的参数
+        //yield本身没有返回值（undefined）
+        //next中的参数会被当做上一个yield语句的返回值
+            function* f(){
+                for(let i = 0;true; i++){
+                    const reset = yield i;
+                    console.log(reset)
+                    reset && (i = -1)
+                }
+            }
+            const g = f();
+            console.log(g.next());          //{value:0 ,done:false}
+            console.log(g.next());              //{value: 1, done: false}
+            console.log(g.next(true));      //{value: 0, done: false}
+            function* foo(x){                                                    
+                const y = 2 * ( yield (x + 1) );
+                const z = yield (y / 3);
+                return x + y + z;
+            }
+            const a = foo(5);
+            // 不传递参数的运行
+            console.log( a.next() ); // {value: 6, done: false} # yield (5 + 1) => value = 6
+            console.log( a.next() ); // {value: NaN, done: false} # yield (x + 1) = undefined => y = 2 * undefined = NaN => yield (NaN / 3) => value = NaN
+            console.log( a.next() ); // {value: NaN, done: true} # yield (y / 3) = undefined => z = undefined => x + y + z = 5 + NaN + undefined = NaN
+            // 传递参数的运行
+            const b = foo(5)
+            console.log( b.next() ); // {value: 6, done: false} # yield (5 + 1) => value = 6
+            console.log( b.next(12) ); // {value: 8, done: false} # yield (x + 1) = 12 => y = 2 * 12 = 24 => yield (24 / 3) => value = 8
+            console.log( b.next(13) ); // {value: 42, done: true} # yield (y / 3) = 13 => z = 13 => x + y + z = 5 + 24 + 13 = 42
+            
+            function* name() {
+                console.log('start');
+                console.log(`1.${yield}`);
+                console.log(`2.${yield}`);
+                return  'end';
+            }
+            const genObj = name();
+            console.log(genObj.next())              // 'start' {value: undefined, done: false}
+            console.log( genObj.next('a'));         // '1.a' {value: undefined, done: false}
+            console.log( genObj.next('a'));         // '2.a' {value: 'end', done: false}
+    </script>  
+</body>
+</html>                                 
+
+
+
+
+
+
+.
