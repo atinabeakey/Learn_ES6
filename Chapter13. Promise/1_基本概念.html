@@ -10,7 +10,92 @@
 </head>
 <body>  
     <script>
-    
+        // 含义
+            // Promise 是一个对象，用来传递异步操作的信息
+            // 特点：1.对象不受外界影响，  2.一旦状态改变就不会在改变，任何时候都可以得到这个结果（状态）
+           /*  // 缺点： 1.一旦新建就会立即执行，中途无法取消  
+                      2. 如果不设置回调函数，Promise内部抛出的错误不会反应到外部
+                      3.处于Pending状态时，无法知道目前进展到哪一步
+                    */
+            //  基本用法
+                // new Promise((resolve,reject) => {})
+         /*    //  基本例子
+                function timeout(ms) {
+                    return new Promise((resolve, reject) => {
+                        setTimeout((res) => {
+                             console.log(res)
+                            resolve(res)
+                        },ms, 'done')
+                    })
+                }
+                timeout(1000).then((value) =>{
+                    console.log(value)    // 'done'
+                })
+            //加载图片
+                
+                const loadImg = (url) =>{
+                    return  new Promise( (resolve,reject) =>{
+                        const img = new Image();
+                        img.onload = () =>{
+                            resolve(img)
+                        }
+                        img.onerror = () =>{
+                            reject(new Error(`Could not load image at ${url} `))
+                        }
+                        img.src = url
+                    })
+                }
+                const imgUrl = 'https://www.baidu.com/img/bd_logo1.png?where=super';
+                loadImg(imgUrl).then((res) =>{
+                    console.log(res)
+                })
+            //Ajax实现
+                function getJson(url) {
+                    return promise = new Promise((resolve,reject) =>{
+                        const client = new XMLHttpRequest();
+                        client.open("GET",url);
+                        client.onreadystatechange = handler;
+                        client.responseType = 'json';
+                        client.setRequestHeader('Accept','application/json');
+                        client.send()
+                        function handler() {
+                            if(this.readyState !== 4) return;
+                            if(this.status === 200){
+                                resolve({
+                                    status: this.status,
+                                    data: this.response
+                                })
+                            }else{
+                                reject(new Error(this.statusText))
+                            }
+                        }
+                      
+                    })
+                }
+                const url = 'json/data.json';
+                getJson(url).then((data) =>{ 
+                    console.log(data)
+                },(error) =>{
+                    console.error('出错了',error)
+                }) */
+            // 异步操作
+                const p1 = new Promise((resolve, reject) =>{
+                    console.log(123);
+                    setTimeout( () =>{
+                        console.log('p1')
+                        reject(new Error('失败了'))
+                    },8000)
+                })
+                const p2 = new Promise((resolve,reject) =>{
+                    console.log(456)
+                    setTimeout(() =>{
+                        console.log('p2')
+                        reject(p1)
+                    },5000)
+                })
+                p2.then(res => console.log(res)).catch(error => console.log(error))
+            /*上面代码中， p1 是一个Promise，3秒之后变为rejected 。 p2的状态由p1决定，1秒之后，p2调用resolve
+            方法，但是此时p1的状态还没有改变，因此p2的状态也不会变。又过了2秒，p1变为rejected,p2 也跟着变为rejected */
     </script>  
 </body>
 </html>                                 
@@ -20,4 +105,4 @@
 
 
 
-.
+                                                                  

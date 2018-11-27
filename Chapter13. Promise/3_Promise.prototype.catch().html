@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="
+    
+    width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>  
+    <script>
+        // Promise.prototype.catch()
+            // 捕获链式操作中，这个catch前所有的错误
+            function createErrorPromise(err){
+                return  new Promise((resolve,reject) =>{
+                    resolve(new Error(`error ${err}`))
+                })
+            }
+            createErrorPromise('a')
+                .then(() =>{
+                    return createErrorPromise('b')
+                })
+                .then(() =>{
+                    return createErrorPromise('c')
+                })
+                .catch((error) =>{
+                    console.log(error)
+                    return createErrorPromise('d')
+                })
+                .then((data) =>{
+                    console.log(data)
+                })
+    </script>  
+</body>
+</html>                                 
+
+
+
+
+
+
+
+
+
+
+                                                                  
+
+
+
+
