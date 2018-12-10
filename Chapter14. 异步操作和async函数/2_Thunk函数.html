@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    
+</head>
+
+<body>
+</body>
+<script>
+    // Thunk函数
+        // 为了实现传名调用时的临时函数
+        // 传值调用
+            const x = 3;
+            function f(m){
+                return m * 2;
+            }
+            f(x + 5)
+// ========= 等价于 =========
+// Thunk的传名调用
+// const Thunk = function() {
+// return x + 5;
+// }
+// function f() {
+// return Thunk() * 2;
+// }
+</script>
+</html> 

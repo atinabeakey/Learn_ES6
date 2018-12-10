@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>  
+    <script>
+        //协程(coroutine)
+        //多协程互相协作，完成任务
+
+        // Genenrator
+        // 可以暂停执行与恢复执行，交换执行权
+        // next方法分阶段执行Generator函数对外输出内部指针，next方法的参数可以向内输入数据
+        function* gen(x){
+            try {
+                var y = yield x + 2;
+            }catch(e) {
+                console.log(e)
+            }
+            return y;
+        }
+        const g = gen(1);
+        console.log(g.next())
+        console.log(g.throw('error'))
+    </script>  
+    
+</body>
+</html>                                 
+
+
+
+.
+
+
+                                                                  
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
